@@ -1,20 +1,25 @@
 {
   "name": "certgen",
   "version": "1.0.0",
-  "description": "Wrapper CLI around the Fabric-CA-Client to generate X.509 compliant certificates",
   "author": "Daan Gordijn",
   "license": "Apache-2.0",
-  "main": "index.js",
+  "description": "Wrapper CLI around the Fabric-CA-Client to generate X.509 compliant certificates",
+  "main": "src/index.js",
   "type": "module",
   "bin": {
-    "certgen": "./index.js"
+    "certgen": "src/index.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "./index.js"
   },
   "dependencies": {
     "chalk": "^5.0.1",
+    "clear": "^0.1.0",
     "commander": "^9.2.0",
-    "inquirer": "^8.2.4"
+    "dotenv": "^16.0.1",
+    "figlet": "^1.5.2",
+    "inquirer": "^8.2.4",
+    "js-yaml": "^4.1.0",
+    "shelljs": "^0.8.5"
   }
 }

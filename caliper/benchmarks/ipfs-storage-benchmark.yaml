@@ -1,0 +1,75 @@
+test:
+  name: ipfs-storage-benchmark
+  description: IPFS Storage Benchmark
+  workers:
+    type: local
+    number: 5
+  rounds:
+    - label: createFile
+      description: Create File Benchmark
+      txNumber: 1000
+      rateControl: { type: "fixed-load", opts: { transactionLoad: 5 } }
+      workload:
+        module: workload/create-file.js
+        arguments:
+          contractId: ipfs-storage
+    - label: listFiles
+      description: List Files Benchmark
+      txNumber: 5 # TODO: Improve so that we can have a 60 second txDuration
+      rateControl: { type: "fixed-load", opts: { transactionLoad: 5 } }
+      workload:
+        module: workload/list-files.js
+        arguments:
+          contractId: ipfs-storage
+    - label: readFile
+      description: Read File Benchmark
+      txDuration: 60
+      rateControl: { type: "fixed-load", opts: { transactionLoad: 5 } }
+      workload:
+        module: workload/read-file.js
+        arguments:
+          contractId: ipfs-storage
+    - label: readPolicy
+      description: Read Policy Benchmark
+      txDuration: 60
+      rateControl: { type: "fixed-load", opts: { transactionLoad: 5 } }
+      workload:
+        module: workload/read-policy.js
+        arguments:
+          contractId: ipfs-storage
+    - label: updateFile
+      description: Update File Benchmark
+      txNumber: 1000
+      rateControl: { type: "fixed-load", opts: { transactionLoad: 5 } }
+      workload:
+        module: workload/update-file.js
+        arguments:
+          contractId: ipfs-storage
+    - label: updatePolicy
+      description: Update Policy Benchmark
+      txNumber: 1000
+      rateControl: { type: "fixed-load", opts: { transactionLoad: 5 } }
+      workload:
+        module: workload/update-policy.js
+        arguments:
+          contractId: ipfs-storage
+    - label: deleteFile
+      description: Delete File Benchmark
+      txNumber: 1000
+      rateControl: { type: "fixed-load", opts: { transactionLoad: 5 } }
+      workload:
+        module: workload/delete-file.js
+        arguments:
+          contractId: ipfs-storage
+
+monitors:
+  resource:
+    - module: docker
+      options:
+        interval: 4
+        containers:
+          [
+            "peer0.org1.example.com",
+            "peer0.org2.example.com",
+            "orderer.example.com",
+          ]

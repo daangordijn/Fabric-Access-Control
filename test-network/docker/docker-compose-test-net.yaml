@@ -146,3 +146,17 @@ services:
       - peer0.org2.example.com
     networks:
       - test
+
+  ipfs:
+    container_name: ipfs
+    image: ipfs/go-ipfs:latest
+    volumes:
+        - /var/ipfs/staging:/export
+        - /var/ipfs/data:/data/ipfs
+    ports:
+      - 4001:4001
+      - 4001:4001/udp
+      - 127.0.0.1:8080:8080
+      - 127.0.0.1:5001:5001
+    networks:
+      - test

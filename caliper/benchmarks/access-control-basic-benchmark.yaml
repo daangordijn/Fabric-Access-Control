@@ -1,0 +1,127 @@
+test:
+  name: access-control-benchmark
+  description: Access Control Benchmark
+  workers:
+    type: local
+    number: 5
+  rounds:
+    - label: validateCertificate_EQ_1
+      description: Validate Certificate Benchmark
+      txNumber: 1000
+      rateControl: { type: "fixed-load", opts: { transactionLoad: 5 } }
+      workload:
+        module: workload/validate-certificate.js
+        arguments:
+          policy: 1
+          contractId: access-control
+          invokerIdentity: User2
+    - label: validateCertificate_EQ_10
+      description: Validate Certificate Benchmark
+      txNumber: 1000
+      rateControl: { type: "fixed-load", opts: { transactionLoad: 5 } }
+      workload:
+        module: workload/validate-certificate.js
+        arguments:
+          policy: 10
+          contractId: access-control
+          invokerIdentity: User2
+    - label: validateCertificate_EQ_50
+      description: Validate Certificate Benchmark
+      txNumber: 1000
+      rateControl: { type: "fixed-load", opts: { transactionLoad: 5 } }
+      workload:
+        module: workload/validate-certificate.js
+        arguments:
+          policy: 50
+          contractId: access-control
+          invokerIdentity: User2
+    - label: validateCertificate_EQ_100
+      description: Validate Certificate Benchmark
+      txNumber: 1000
+      rateControl: { type: "fixed-load", opts: { transactionLoad: 5 } }
+      workload:
+        module: workload/validate-certificate.js
+        arguments:
+          policy: 100
+          contractId: access-control
+          invokerIdentity: User2
+    - label: validateCertificate_EQ_500
+      description: Validate Certificate Benchmark
+      txNumber: 1000
+      rateControl: { type: "fixed-load", opts: { transactionLoad: 5 } }
+      workload:
+        module: workload/validate-certificate.js
+        arguments:
+          policy: 500
+          contractId: access-control
+          invokerIdentity: User2
+    - label: validateCertificate_EQ_1000
+      description: Validate Certificate Benchmark
+      txNumber: 1000
+      rateControl: { type: "fixed-load", opts: { transactionLoad: 5 } }
+      workload:
+        module: workload/validate-certificate.js
+        arguments:
+          policy: 1000
+          contractId: access-control
+          invokerIdentity: User2
+    - label: validateCertificate_EQ_5000
+      description: Validate Certificate Benchmark
+      txNumber: 1000
+      rateControl: { type: "fixed-load", opts: { transactionLoad: 5 } }
+      workload:
+        module: workload/validate-certificate.js
+        arguments:
+          policy: 5000
+          contractId: access-control
+          invokerIdentity: User2
+    - label: validateCertificate_EQ_10000
+      description: Validate Certificate Benchmark
+      txNumber: 1000
+      rateControl: { type: "fixed-load", opts: { transactionLoad: 5 } }
+      workload:
+        module: workload/validate-certificate.js
+        arguments:
+          policy: 10000
+          contractId: access-control
+          invokerIdentity: User2
+    - label: validateCertificate_EQ_50000
+      description: Validate Certificate Benchmark
+      txNumber: 1000
+      rateControl: { type: "fixed-load", opts: { transactionLoad: 5 } }
+      workload:
+        module: workload/validate-certificate.js
+        arguments:
+          policy: 50000
+          contractId: access-control
+          invokerIdentity: User2
+    - label: validateCertificate_EQ_100000
+      description: Validate Certificate Benchmark
+      txNumber: 1000
+      rateControl: { type: "fixed-load", opts: { transactionLoad: 5 } }
+      workload:
+        module: workload/validate-certificate.js
+        arguments:
+          policy: 100000
+          contractId: access-control
+          invokerIdentity: User2
+    - label: registerCertificate
+      description: Register Certificate Benchmark
+      txNumber: 1000
+      rateControl: { type: "fixed-load", opts: { transactionLoad: 5 } }
+      workload:
+        module: workload/register-certificate.js
+        arguments:
+          contractId: access-control
+
+monitors:
+  resource:
+    - module: docker
+      options:
+        interval: 4
+        containers:
+          [
+            "peer0.org1.example.com",
+            "peer0.org2.example.com",
+            "orderer.example.com",
+          ]

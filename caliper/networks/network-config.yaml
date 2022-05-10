@@ -1,0 +1,36 @@
+name: Caliper
+version: "2.0.0"
+
+caliper:
+  blockchain: fabric
+  sutOptions:
+    mutualTls: true
+
+channels:
+  - channelName: mychannel
+    contracts:
+      - id: ipfs-storage
+      - id: access-control
+
+organizations:
+  - mspid: Org1MSP
+    identities:
+      certificates:
+        - name: "User1" # Used in the 'ipfs-storage' benchmark
+          clientPrivateKey:
+            path: "../test-network/organizations/peerOrganizations/org1.example.com/users/User1@org1.example.com/msp/keystore/b71a6f66a5f00cbf5af26577cde9f5b22f617f50a67ffe5e3dc4376d1ef44347_sk"
+          clientSignedCert:
+            path: "../test-network/organizations/peerOrganizations/org1.example.com/users/User1@org1.example.com/msp/signcerts/cert.pem"
+        - name: "User2" # Used in the 'access-control' benchmark
+          clientPrivateKey:
+            path: "../test-network/organizations/peerOrganizations/org1.example.com/users/User2@org1.example.com/msp/keystore/b85edfaf4a5aa15398e180ad9124aaa53b09a048bdba18bd3153c08247e8d8ee_sk"
+          clientSignedCert:
+            path: "../test-network/organizations/peerOrganizations/org1.example.com/users/User2@org1.example.com/msp/signcerts/cert.pem"
+        - name: "User3" # Used in the 'access-control' benchmark
+          clientPrivateKey:
+            path: "../test-network/organizations/peerOrganizations/org1.example.com/users/User3@org1.example.com/msp/keystore/b2a94ec6f46cf1126d0575ac62aba316272f145db9451829ea1845ff7ea7ca8a_sk"
+          clientSignedCert:
+            path: "../test-network/organizations/peerOrganizations/org1.example.com/users/User3@org1.example.com/msp/signcerts/cert.pem"
+    connectionProfile:
+      path: "../test-network/organizations/peerOrganizations/org1.example.com/connection-org1.yaml"
+      discover: true

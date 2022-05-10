@@ -1,0 +1,18 @@
+{
+  "name": "caliper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start:ipfs-storage": "npx caliper launch manager --caliper-fabric-gateway-enabled --caliper-benchconfig benchmarks/ipfs-storage-benchmark.yaml",
+    "start:access-control-basic": "npx caliper launch manager --caliper-fabric-gateway-enabled --caliper-benchconfig benchmarks/access-control-basic-benchmark.yaml",
+    "start:access-control-parent": "npx caliper launch manager --caliper-fabric-gateway-enabled --caliper-benchconfig benchmarks/access-control-parent-benchmark.yaml"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@hyperledger/caliper-cli": "^0.5.0",
+    "fabric-network": "^2.2.12"
+  }
+}
