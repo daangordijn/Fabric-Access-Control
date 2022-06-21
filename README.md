@@ -23,6 +23,9 @@
 
 ## Getting Started
 
+### About
+This repository is part of the [TU Delft Computer Science & Engineering Research Project](https://github.com/TU-Delft-CSE/Research-Project), edition 2021-2022 Q4. The research paper associated with this codebase is publicly available at the [TU Delft Repository](https://repository.tudelft.nl/islandora/object/uuid:0687b37f-ccca-4459-9c32-9f9f3ba12816?collection=education). 
+
 ### Prerequisites
 In order to run this demo repository, you need to install the following tools:
 
